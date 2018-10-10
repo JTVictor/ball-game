@@ -1,5 +1,5 @@
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
 var x = canvas.width/2;
 var y = canvas.height-30;
 var dx = 2;
@@ -17,7 +17,7 @@ var ballRadius = 10;
 function drawBall() {
   ctx.beginPath();
   ctx.arc(x, y ,ballRadius, 0, Math.PI*2);
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = '#0095DD';
   ctx.fill();
   ctx.closePath();
 }
@@ -25,7 +25,7 @@ function drawBall() {
 function drawPaddle() {
   ctx.beginPath();
   ctx.rect(paddleX, canvas.height-paddleHeight, paddleWidth, paddleHeight);
-  ctx.fillStyle = "#0095DD";
+  ctx.fillStyle = '#0095DD';
   ctx.fill();
   ctx.closePath();
 }
@@ -43,10 +43,17 @@ function draw() {
   }
   x += dx;
   y += dy;
+
+  if(rightPressed && paddleX < canvas.width-paddleWidth) {
+    paddleX += 7;
+  }
+  else if(leftPressed && paddleX > 0) {
+    paddleX -= 7;
+  }
 }
 
-document.addEventListener("keydown", keyDownHandler, false);
-document.addEventListener("keyup", keyUpHandler, false);
+document.addEventListener('keydown', keyDownHandler, false);
+document.addEventListener('keyup', keyUpHandler, false);
 
 function keyDownHandler(e) {
   if(e.keyCode == 39) {
